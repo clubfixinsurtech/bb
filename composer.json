@@ -1,0 +1,17 @@
+{
+    "name": "clubfixinsurtech/bb",
+    "description": "Integração com API do Banco do Brasil",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "BB\\": "src/"
+        }
+    },
+    "require": {
+       "php": "^8.1",
+        "saloonphp/saloon": "^3.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.2"
+    }
+}

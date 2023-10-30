@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a5c6d03d-fcd7-4c3f-bdbf-b42c9574e72d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Asaas.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AsaasConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Contracts/AddressInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Contracts/CreditCardHolderInfoInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Contracts/CreditCardInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Contracts/CustomerInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Contracts/HasPayload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entities/Address.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entities/CreditCard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entities/CreditCardHolderInfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entities/Customer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entities/Payment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enums/BillingType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exceptions/AsaasValidatorException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exceptions/CreditCardException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exceptions/CreditCardHolderInfoException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/ReflectionalProperties.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/RequiredFields.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/Validator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Requests/CreditCard/Tokenize.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Requests/Customer/Create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Requests/Payments/Create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Traits/ConditionableTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Traits/HasPayload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WVWJXmNrYGIAwz3UBhzCxvNX2q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/Users/sergiodanilojr/Sites/studies/valorempay-sdk/src/Entities",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.add.doc.comment.for.fields.panel.add.php.doc.for.all.properties": "true",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Entities" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a5c6d03d-fcd7-4c3f-bdbf-b42c9574e72d" name="Changes" comment="" />
+      <created>1696818155997</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696818155997</updated>
+      <workItem from="1696818157145" duration="33147000" />
+      <workItem from="1697053495974" duration="598000" />
+      <workItem from="1697213309563" duration="598000" />
+      <workItem from="1698151637674" duration="791000" />
+      <workItem from="1698240837022" duration="715000" />
+      <workItem from="1698323680292" duration="4795000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
