@@ -21,6 +21,9 @@ class BBTest extends TestCase
 
         $this->assertArrayHasKey('client_secret', $config, 'Client secret is missing in config');
         $this->assertNotEmpty($config['client_secret'], 'Client secret is empty');
+
+        $this->assertArrayHasKey('developer_application_key', $config, 'Developer application key is missing in config');
+        $this->assertNotEmpty($config['developer_application_key'], 'Developer application key is empty');
     }
 
     protected function setUp(): void
@@ -28,8 +31,14 @@ class BBTest extends TestCase
         $config = include dirname(__DIR__, 2) . '/examples/config.php';
         $clientId = $config['client_id'];
         $clientSecret = $config['client_secret'];
+        $developerApplicationKey = $config['developer_application_key'];
 
-        $connector = new \BB\BBConnector(clientId: $clientId, clientSecret: $clientSecret);
+        $connector = new \BB\BBConnector(
+            clientId: $clientId,
+            clientSecret: $clientSecret,
+            developerApplicationKey: $developerApplicationKey,
+            isSandbox: true,
+        );
         $this->bb = $connector->bb();
     }
 

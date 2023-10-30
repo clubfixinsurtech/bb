@@ -39,8 +39,15 @@ Para obter mais detalhes sobre como utilizar, consulte a pasta "examples" no dir
 
 $clientId = '';
 $clientSecret = '';
+$developerApplicationKey = '';
+$isSandbox = true;
 
-$connector = new \BB\BBConnector(clientId: $clientId, clientSecret: $clientSecret);
+$connector = new \BB\BBConnector(
+    clientId: $clientId,
+    clientSecret: $clientSecret,
+    developerApplicationKey: $developerApplicationKey,
+    isSandbox: $isSandbox,
+);
 
 // Create transaction
 $request = ''; //$connector->bb()->foo();

@@ -10,6 +10,8 @@ class BBConnector extends Connector
     public function __construct(
         private readonly string $clientId,
         private readonly string $clientSecret,
+        private readonly string $developerApplicationKey,
+        private readonly bool   $isSandbox = true,
     )
     {
         $this->requestAndSetAuthToken();
@@ -17,7 +19,7 @@ class BBConnector extends Connector
 
     public function resolveBaseUrl(): string
     {
-        return '';
+        return 'https://api.sandbox.bb.com.br';
     }
 
     public function bb(): BBResource
@@ -25,11 +27,16 @@ class BBConnector extends Connector
         return new BBResource($this);
     }
 
-    protected function defaultHeaders(): array
+    protected function defaultQuery(): array
     {
+        if ($this->isSandbox === true) {
+            return [
+                'gw-dev-app-key' => $this->developerApplicationKey,
+            ];
+        }
+
         return [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
+            'gw-app-key' => $this->developerApplicationKey,
         ];
     }
 
