@@ -4,6 +4,8 @@ namespace BB\Helpers;
 
 namespace BB\Exceptions\ValidatorException;
 
+use BB\Exceptions\ValidatorException;
+
 class RequiredFields
 {
     public function __construct(
