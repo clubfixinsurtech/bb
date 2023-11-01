@@ -1,20 +1,21 @@
 <?php
 
-namespace Tests\Unit\Requests\Charges\Billets;
+namespace Tests\Unit\Requests\Charges\Slips;
 
-use BB\Requests\Charges\Billets\GetBilletsRequest;
 use Saloon\Http\Request;
 use Tests\Unit\RequestTestCase;
 
-class GetBilletsRequestTest extends RequestTestCase
+class GetSlipsRequestTest extends RequestTestCase
 {
     protected function requestClass(): Request
     {
-        return new GetBilletsRequest([
-            'indicadorSituacao' => 'A',
-            'agenciaBeneficiario' => 1111,
-            'contaBeneficiario' => 1111111,
-        ]);
+        return new \BB\Requests\Charges\Slips\GetSlipsRequest(
+            new \BB\Entities\Slip(
+                indicadorSituacao: 'A',
+                agenciaBeneficiario: 1234,
+                contaBeneficiario: 123456,
+            ),
+        );
     }
 
     protected function expectedRequestMethod(): string

@@ -15,7 +15,7 @@ class CreateImmediateBillingRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        protected array $options,
+        protected CreateImmediateBilling $immediateBilling,
     )
     {
     }
@@ -27,6 +27,6 @@ class CreateImmediateBillingRequest extends Request implements HasBody
 
     protected function defaultBody(): array
     {
-        return (new CreateImmediateBilling($this->options))->toArray();
+        return $this->immediateBilling->payload();
     }
 }

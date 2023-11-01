@@ -2,15 +2,13 @@
 
 namespace BB\Helpers;
 
-namespace BB\Exceptions\ValidatorException;
-
 use BB\Exceptions\ValidatorException;
 
 class RequiredFields
 {
     public function __construct(
-        private array  $requireds,
-        private object $class
+        private readonly array  $requireds,
+        private readonly object $class
     )
     {
         $this->validate();
@@ -19,7 +17,7 @@ class RequiredFields
     public function validate(): void
     {
         if (!is_object($this->class)) {
-            throw new \DomainException("Whooopssss!!! Invalid Class!");
+            throw new \DomainException('Invalid class provided');
         }
 
         if (count($empties = array_filter($this->requireds, fn($field) => empty($field)))) {

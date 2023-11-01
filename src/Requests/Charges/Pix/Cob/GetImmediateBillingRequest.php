@@ -1,17 +1,17 @@
 <?php
 
-namespace BB\Requests\Charges\Billets;
+namespace BB\Requests\Charges\Pix\Cob;
 
+use BB\Entities\GetImmediateBilling;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
-class ShowBilletRequest extends Request
+class GetImmediateBillingRequest extends Request
 {
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected int $id,
-        protected int $numeroConvenio,
+        private readonly GetImmediateBilling $immediateBilling,
     )
     {
         //
@@ -19,13 +19,11 @@ class ShowBilletRequest extends Request
 
     public function resolveEndpoint(): string
     {
-        return '/cobrancas/v2/boletos/' . $this->id;
+        return '/pix/v2/cob';
     }
 
     protected function defaultQuery(): array
     {
-        return [
-            'numeroConvenio' => $this->numeroConvenio,
-        ];
+        return $this->immediateBilling->payload();
     }
 }

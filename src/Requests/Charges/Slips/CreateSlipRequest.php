@@ -1,21 +1,21 @@
 <?php
 
-namespace BB\Requests\Charges\Billets;
+namespace BB\Requests\Charges\Slips;
 
-use BB\Entities\CreateBillet;
+use BB\Entities\CreateSlip;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-class CreateBilletRequest extends Request implements HasBody
+class CreateSlipRequest extends Request implements HasBody
 {
     use HasJsonBody;
 
     protected Method $method = Method::POST;
 
     public function __construct(
-        protected array $options,
+        protected CreateSlip $slip,
     )
     {
     }
@@ -27,6 +27,6 @@ class CreateBilletRequest extends Request implements HasBody
 
     protected function defaultBody(): array
     {
-        return (new CreateBillet($this->options))->toArray();
+        return $this->slip->payload();
     }
 }

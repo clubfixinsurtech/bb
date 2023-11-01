@@ -1,17 +1,17 @@
 <?php
 
-namespace BB\Requests\Charges\Billets;
+namespace BB\Requests\Charges\Slips;
 
-use BB\Entities\GetBillets;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
-class GetBilletsRequest extends Request
+class ShowSlipRequest extends Request
 {
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected array $options
+        protected int $id,
+        protected int $numeroConvenio,
     )
     {
         //
@@ -19,11 +19,13 @@ class GetBilletsRequest extends Request
 
     public function resolveEndpoint(): string
     {
-        return '/cobrancas/v2/boletos';
+        return '/cobrancas/v2/boletos/' . $this->id;
     }
 
     protected function defaultQuery(): array
     {
-        return (new GetBillets($this->options))->toArray();
+        return [
+            'numeroConvenio' => $this->numeroConvenio,
+        ];
     }
 }

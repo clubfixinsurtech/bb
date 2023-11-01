@@ -2,55 +2,76 @@
 
 namespace BB\Entities;
 
-class CreateImmediateBilling
+use BB\Helpers\{PixKeyValidator, RequiredFields};
+use BB\Contracts\{CreateImmediateBillingInterface, HasPayloadInterface};
+use BB\Traits\{ConditionableTrait, HasPayload};
+
+class CreateImmediateBilling implements HasPayloadInterface, CreateImmediateBillingInterface
 {
-    private const REQUIRED = [
+    use HasPayload, ConditionableTrait;
+
+    protected array $required = [
         'calendario',
         'valor',
         'chave',
     ];
 
-    public function __construct(protected array $options)
+    public function __construct(
+        private Calendario $calendario,
+        private Valor      $valor,
+        private string     $chave,
+    )
     {
-        $this->validate($options);
+        $this->validate();
     }
 
-    public function toArray(): array
+    public function validate(): void
     {
-        return $this->options;
+        RequiredFields::check($this->required, $this);
+        PixKeyValidator::validatePixKey($this->chave);
     }
 
-    private function validate(array $options): void
+    public function getRequired(): array
     {
-        $this->validateRequired($options);
-        $this->validateCalendario($options);
-        $this->validateValor($options);
+        return $this->required;
     }
 
-    private function validateRequired(array $options): void
+    public function setRequired(array $required): CreateImmediateBilling
     {
-        array_filter(self::REQUIRED, function (string $key) use ($options) {
-            if (!array_key_exists($key, $options)) {
-                throw new \InvalidArgumentException("The key {$key} is required");
-            }
-        });
+        $this->required = $required;
+        return $this;
     }
 
-    private function validateCalendario(array $options): void
+    public function getCalendario(): Calendario
     {
-        if (!isset($options['calendario']['expiracao'])) {
-            throw new \InvalidArgumentException('The key calendario.expiracao is required');
-        }
-
-        if (!is_int($options['calendario']['expiracao'])) {
-            throw new \InvalidArgumentException('The key calendario.expiracao must be integer');
-        }
+        return $this->calendario;
     }
 
-    private function validateValor(array $options): void
+    public function setCalendario(Calendario $calendario): CreateImmediateBilling
     {
-        if (!preg_match('/\d{1,10}\.\d{2}/', $options['valor']['original'])) {
-            throw new \InvalidArgumentException('The key valor.original must be float');
-        }
+        $this->calendario = $calendario;
+        return $this;
+    }
+
+    public function getValor(): Valor
+    {
+        return $this->valor;
+    }
+
+    public function setValor(Valor $valor): CreateImmediateBilling
+    {
+        $this->valor = $valor;
+        return $this;
+    }
+
+    public function getChave(): string
+    {
+        return $this->chave;
+    }
+
+    public function setChave(string $chave): CreateImmediateBilling
+    {
+        $this->chave = $chave;
+        return $this;
     }
 }

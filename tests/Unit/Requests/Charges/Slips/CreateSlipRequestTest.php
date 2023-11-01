@@ -1,20 +1,21 @@
 <?php
 
-namespace Tests\Unit\Requests\Charges\Billets;
+namespace Tests\Unit\Requests\Charges\Slips;
 
-use BB\Requests\Charges\Billets\CreateBilletRequest;
 use Saloon\Http\Request;
 use Tests\Unit\RequestTestCase;
 
-class CreateBilletRequestTest extends RequestTestCase
+class CreateSlipRequestTest extends RequestTestCase
 {
     protected function requestClass(): Request
     {
-        return new CreateBilletRequest([
-            'numeroConvenio' => 123456789,
-            'dataVencimento' => (new \DateTime())->format('d.m.Y'),
-            'valorOriginal' => 100.99,
-        ]);
+        return new \BB\Requests\Charges\Slips\CreateSlipRequest(
+            new \BB\Entities\CreateSlip(
+                numeroConvenio: 123456789,
+                dataVencimento: (new \DateTime())->format('d.m.Y'),
+                valorOriginal: 100.99,
+            ),
+        );
     }
 
     protected function expectedRequestMethod(): string

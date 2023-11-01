@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit\Requests\Charges\Billets;
+namespace Tests\Unit\Requests\Charges\Slips;
 
-use BB\Requests\Charges\Billets\ShowBilletRequest;
+use BB\Requests\Charges\Slips\ShowSlipRequest;
 use Saloon\Http\Request;
 use Tests\Unit\RequestTestCase;
 
-class ShowBilletRequestTest extends RequestTestCase
+class ShowSlipRequestTest extends RequestTestCase
 {
     protected function requestClass(): Request
     {
-        return new ShowBilletRequest(1, 1);
+        return new ShowSlipRequest(1, 1);
     }
 
     protected function expectedRequestMethod(): string
