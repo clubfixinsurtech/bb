@@ -7,7 +7,7 @@ use BB\Exceptions\ValidatorException;
 class RequiredFields
 {
     public function __construct(
-        private readonly array  $requireds,
+        private readonly array  $required,
         private readonly object $class
     )
     {
@@ -20,15 +20,15 @@ class RequiredFields
             throw new \DomainException('Invalid class provided');
         }
 
-        if (count($empties = array_filter($this->requireds, fn($field) => empty($field)))) {
+        if (count($empties = array_filter($this->required, fn($field) => empty($field)))) {
             $exception = new ValidatorException();
             array_map(fn($field) => $exception->addField($field), array_keys($empties));
             throw $exception;
         }
     }
 
-    public static function check(array $requireds, object $class): void
+    public static function check(array $required, object $class): void
     {
-        new self($requireds, $class);
+        new self($required, $class);
     }
 }

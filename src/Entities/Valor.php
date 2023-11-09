@@ -2,11 +2,11 @@
 
 namespace BB\Entities;
 
-use BB\Contracts\{HasPayloadInterface, ValorInterface};
-use BB\Helpers\RequiredFields;
+use BB\Contracts\HasPayloadInterface;
+use BB\Helpers\{PropertyValidator, RequiredFields, Validator};
 use BB\Traits\{ConditionableTrait, HasPayload};
 
-class Valor implements HasPayloadInterface, ValorInterface
+class Valor implements HasPayloadInterface
 {
     use HasPayload, ConditionableTrait;
 
@@ -14,8 +14,13 @@ class Valor implements HasPayloadInterface, ValorInterface
         'original',
     ];
 
+    private ?array $multa = null;
+    private ?array $juros = null;
+    private ?array $abatimento = null;
+    private ?array $desconto = null;
+
     public function __construct(
-        private string $original,
+        private float $original,
     )
     {
         $this->validate();
@@ -24,7 +29,7 @@ class Valor implements HasPayloadInterface, ValorInterface
     public function validate(): void
     {
         RequiredFields::check($this->required, $this);
-        $this->validateOriginal($this->original);
+        PropertyValidator::validate($this);
     }
 
     public function getRequired(): array
@@ -32,27 +37,76 @@ class Valor implements HasPayloadInterface, ValorInterface
         return $this->required;
     }
 
-    public function setRequired(array $required): Valor
+    public function setRequired(array $required): self
     {
         $this->required = $required;
         return $this;
     }
 
-    public function getOriginal(): string
+    public function getOriginal(): float
     {
         return $this->original;
     }
 
-    public function setOriginal(string $original): Valor
+    public function setOriginal(string $original): self
     {
         $this->original = $original;
+        $this->validate();
         return $this;
     }
 
-    private function validateOriginal(string $original): void
+    public function getMulta(): ?array
     {
-        if (!preg_match('/\d{1,10}\.\d{2}/', $original)) {
-            throw new \InvalidArgumentException('The key valor.original must be float');
+        return $this->multa;
+    }
+
+    public function setMulta(MultaAplicada $multa): self
+    {
+        $this->multa = $multa->payload();
+        $this->validate();
+        return $this;
+    }
+
+    public function getJuros(): ?array
+    {
+        return $this->juros;
+    }
+
+    public function setJuros(JuroAplicado $juros): self
+    {
+        $this->juros = $juros->payload();
+        $this->validate();
+        return $this;
+    }
+
+    public function getAbatimento(): ?array
+    {
+        return $this->abatimento;
+    }
+
+    public function setAbatimento(AbatimentoAplicado $abatimento): self
+    {
+        $this->abatimento = $abatimento->payload();
+        $this->validate();
+        return $this;
+    }
+
+    public function getDesconto(): ?array
+    {
+        return $this->desconto;
+    }
+
+    public function setDesconto(DescontosAplicados $desconto): self
+    {
+        $this->desconto = $desconto->payload();
+        $this->validate();
+        return $this;
+    }
+
+    private function validateOriginal(): void
+    {
+        if (!Validator::decimal($this->original)) {
+            throw new \InvalidArgumentException('Valor Inválido');
         }
     }
 }

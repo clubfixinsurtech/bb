@@ -2,9 +2,9 @@
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', '0');
-set_exception_handler(fn($exception) => print($exception->getMessage()));
+//error_reporting(E_ALL);
+//ini_set('display_errors', '0');
+//set_exception_handler(fn($exception) => print($exception->getMessage()));
 
 
 $clientId = '';

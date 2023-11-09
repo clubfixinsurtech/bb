@@ -13,9 +13,24 @@ class BasicAuth extends Request implements HasBody
 
     protected Method $method = Method::POST;
 
+    protected array $chargeScopes = [
+        'cobrancas.boletos-info',
+        'cobrancas.boletos-requisicao',
+    ];
+
+    protected array $pixScopes = [
+        'cob.write',
+        'cob.read',
+        'cobv.write',
+        'cobv.read',
+        'pix.write',
+        'pix.read',
+    ];
+
     public function __construct(
         private readonly string $clientId,
         private readonly string $clientSecret,
+        private readonly bool   $isSandbox = true,
     )
     {
         //
@@ -23,7 +38,11 @@ class BasicAuth extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return 'https://oauth.hm.bb.com.br/oauth/token';
+        if ($this->isSandbox === true) {
+            return 'https://oauth.hm.bb.com.br/oauth/token';
+        }
+
+        return 'https://oauth.bb.com.br/oauth/token';
     }
 
     protected function defaultHeaders(): array
@@ -37,7 +56,12 @@ class BasicAuth extends Request implements HasBody
     {
         return [
             'grant_type' => 'client_credentials',
-            'scope' => 'cobrancas.boletos-info cobrancas.boletos-requisicao',
+            'scope' => $this->getScopes(),
         ];
+    }
+
+    private function getScopes(): string
+    {
+        return implode(' ', array_merge($this->chargeScopes, $this->pixScopes));
     }
 }

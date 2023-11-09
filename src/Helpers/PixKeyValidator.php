@@ -26,22 +26,21 @@ class PixKeyValidator
 
     protected static function isValidCPF(string $key): bool
     {
-        return v::digit()->cpf()->validate($key);
+        return Validator::cpf($key);
     }
 
     protected static function isValidCNPJ(string $key): bool
     {
-        return v::digit()->cnpj()->validate($key);
+        return Validator::cnpj($key);
     }
 
     protected static function isValidPhoneNumber(string $key): bool
     {
-        $phoneRegex = '/^\+55\d{10,11}$/';
-        return preg_match($phoneRegex, $key) === 1;
+        return preg_match('/^\+55\d{10,11}$/', $key) === 1;
     }
 
     protected static function isValidRandomKey(string $key): bool
     {
-        return v::uuid()->validate($key);
+        return Validator::uuid($key);
     }
 }

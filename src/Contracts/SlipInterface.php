@@ -2,19 +2,11 @@
 
 namespace BB\Contracts;
 
-use BB\Entities\Slip;
-
-interface SlipInterface
+interface SlipInterface extends HasPayloadInterface
 {
-    public function getIndicadorSituacao(): string;
+    public function validate(): void;
 
-    public function setIndicadorSituacao(string $indicadorSituacao): Slip;
+    public function getRequired(): array;
 
-    public function getAgenciaBeneficiario(): int;
-
-    public function setAgenciaBeneficiario(int $agenciaBeneficiario): Slip;
-
-    public function getContaBeneficiario(): int;
-
-    public function setContaBeneficiario(int $contaBeneficiario): Slip;
+    public function setRequired(array $required): self;
 }

@@ -49,8 +49,8 @@ $connector = new \BB\BBConnector(
     isSandbox: $isSandbox,
 );
 
-// Create transaction
-$request = $connector->bb()->createSlip(
+// Create slip
+$request = $connector->bb()->slipCreate(
     new \BB\Entities\CreateSlip(
         numeroConvenio: 123456789,
         dataVencimento: (new \DateTime())->format('d.m.Y'),

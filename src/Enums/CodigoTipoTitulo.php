@@ -1,0 +1,36 @@
+<?php
+
+namespace BB\Enums;
+
+enum CodigoTipoTitulo: int
+{
+    case CHEQUE = 1;
+    case DUPLICATA_MERCANTIL = 2;
+    case DUPLICATA_MTIL_POR_INDICACAO = 3;
+    case DUPLICATA_DE_SERVICO = 4;
+    case DUPLICATA_DE_SRVC_P_INDICACAO = 5;
+    case DUPLICATA_RURAL = 6;
+    case LETRA_DE_CAMBIO = 7;
+    case NOTA_DE_CREDITO_COMERCIAL = 8;
+    case NOTA_DE_CREDITO_A_EXPORTACAO = 9;
+    case NOTA_DE_CREDITO_INDULTRIAL = 10;
+    case NOTA_DE_CREDITO_RURAL = 11;
+    case NOTA_PROMISSORIA = 12;
+    case NOTA_PROMISSORIA_RURAL = 13;
+    case TRIPLICATA_MERCANTIL = 14;
+    case TRIPLICATA_DE_SERVICO = 15;
+    case NOTA_DE_SEGURO = 16;
+    case RECIBO = 17;
+    case FATURA = 18;
+    case NOTA_DE_DEBITO = 19;
+    case APOLICE_DE_SEGURO = 20;
+    case MENSALIDADE_ESCOLAR = 21;
+    case PARCELA_DE_CONSORCIO = 22;
+    case DIVIDA_ATIVA_DA_UNIAO = 23;
+    case DIVIDA_ATIVA_DE_ESTADO = 24;
+    case DIVIDA_ATIVA_DE_MUNICIPIO = 25;
+    case CARTAO_DE_CREDITO = 31;
+    case BOLETO_PROPOSTA = 32;
+    case BOLETO_APORTE = 33;
+    case OUTROS = 99;
+}

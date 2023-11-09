@@ -40,6 +40,14 @@ abstract class RequestTestCase extends TestCase
         $this->checkDefault('body');
     }
 
+    protected function assertPreConditions(): void
+    {
+        $class = substr(str_replace('Tests\Unit\\', 'BB\\', get_class($this)), 0, -4);
+
+        $this->assertTrue(class_exists($class), "Class $class does not exist");
+        $this->assertEquals($class, get_class($this->requestClass()));
+    }
+
     private function getMethod(string $name): \ReflectionMethod
     {
         $reflection = new \ReflectionClass($this->requestClass());

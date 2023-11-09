@@ -19,7 +19,11 @@ class BBConnector extends Connector
 
     public function resolveBaseUrl(): string
     {
-        return 'https://api.sandbox.bb.com.br';
+        if ($this->isSandbox === true) {
+            return 'https://api.hm.bb.com.br';
+        }
+
+        return 'https://api.bb.com.br';
     }
 
     public function bb(): BBResource
@@ -42,12 +46,12 @@ class BBConnector extends Connector
 
     private function requestAndSetAuthToken(): void
     {
-        $response = $this->send(new BasicAuth($this->clientId, $this->clientSecret));
+        $response = $this->send(new BasicAuth(clientId: $this->clientId, clientSecret: $this->clientSecret, isSandbox: $this->isSandbox));
 
         if ($response->failed()) {
             throw new \Exception('Failed to get token');
         }
 
-        $this->withTokenAuth($response->object()->access_token);
+        $this->withTokenAuth($response->json('access_token'));
     }
 }

@@ -1,0 +1,13 @@
+<?php
+
+namespace BB\Enums;
+
+enum ModalidadeDescontosAplicados: int
+{
+    case VALOR_FIXO_ATE_AS_DATAS_INFORMADAS = 1;
+    case PERCENTUAL_ATE_A_DATA_INFORMADA = 2;
+    case VALOR_POR_ANTECIPACAO_DIA_CORRIDO = 3;
+    case VALOR_POR_ANTECIPACAO_DIA_UTIL = 4;
+    case PERCENTUAL_POR_ANTECIPACAO_DIA_CORRIDO = 5;
+    case PERCENTUAL_POR_ANTECIPACAO_DIA_UTIL = 6;
+}

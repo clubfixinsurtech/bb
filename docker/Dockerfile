@@ -34,6 +34,11 @@ RUN pecl install -o -f redis \
 
 COPY ./docker/php.ini /usr/local/etc/php/conf.d/custom-php.ini
 
+COPY ./docker/certificates/sandbox/*.cer /usr/local/share/ca-certificates/
+RUN cd /usr/local/share/ca-certificates/ && \
+    for file in *.cer; do openssl x509 -in "$file" -out "${file%.*}.pem"; rm "$file"; done && \
+    update-ca-certificates
+
 WORKDIR /var/www
 
 # Permissions to workdir

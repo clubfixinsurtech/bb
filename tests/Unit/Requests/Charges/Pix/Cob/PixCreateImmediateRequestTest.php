@@ -1,0 +1,26 @@
+<?php
+
+namespace Tests\Unit\Requests\Charges\Pix\Cob;
+
+use Saloon\Http\Request;
+use Tests\Unit\RequestTestCase;
+
+class PixCreateImmediateRequestTest extends RequestTestCase
+{
+    protected function requestClass(): Request
+    {
+        return new \BB\Requests\Charges\Pix\Cob\PixCreateImmediateRequest(
+            (new \BB\Strategies\PixCreateStrategy()),
+        );
+    }
+
+    protected function expectedRequestMethod(): string
+    {
+        return 'POST';
+    }
+
+    protected function expectedEndpoint(): string
+    {
+        return '/pix/v2/cob';
+    }
+}
